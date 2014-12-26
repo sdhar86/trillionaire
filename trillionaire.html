@@ -17,13 +17,19 @@
 </template>
 
 <template name = "hello">
+	{{#if currentUser}}
 	<h2>You ({{user.username}}) have ${{user.money}} and make ${{user.rate}} per second!</h2>
+	 {{else}}
+	 <h2> You must login </h2>
+	 {{/if}}
+
 		<input type="button" class="code btn span4" value="Write line of code ($25)" />
 
 	{{#each items}}
 	<input type="button" class="buy btn span4" id="{{cost}}" value="{{name}} (${{cost}})" />
 	{{/each}}	
 
+	<p> Special Thanks StudentRND.com for the idea! and the tutorial</p>
 </template>
 
 <template name = "leaderboard">
