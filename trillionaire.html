@@ -1,0 +1,44 @@
+<head>
+  <title>Trillionaire</title>
+</head>
+
+<body>
+	<div class = "container">
+		{{> loginButtons}}
+		{{>leaderboard}}
+		{{> head}}
+		{{> hello}}
+	</div>
+</body>
+
+<template name="head">
+	<h1> Become a Trillionaire </h1>
+	<h3> Buy <a href="http://money.cnn.com/2014/11/25/investing/apple-700-billion/"> Apple</a> and win the game.</h3>
+</template>
+
+<template name = "hello">
+	<h2>You ({{user.username}}) have ${{user.money}} and make ${{user.rate}} per second!</h2>
+		<input type="button" class="code btn span4" value="Write line of code ($25)" />
+
+	{{#each items}}
+	<input type="button" class="buy btn span4" id="{{cost}}" value="{{name}} (${{cost}})" />
+	{{/each}}	
+
+</template>
+
+<template name = "leaderboard">
+	<table class="leaderboard table table-striped">
+	  <thead>
+	    <th>Username</th><th>Net Worth</th><th>Dollars per Second</th>
+	  </thead>
+
+	  {{#each players}}
+	  <tr class="player">
+	    <td class="name">{{username}}</td>
+	    <td class="money">${{money}}</td>
+	    <td class="rate">{{rate}} dps</td>
+	  </tr>
+	  {{/each}}
+	</table>
+</template>
+
