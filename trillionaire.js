@@ -8,8 +8,8 @@ items = [
 {name: "Hire a Meteorite", cost: 40000},
 {name: "Strip on Weekends", cost: 100000},
 {name: "Buy a Strip Club", cost: 500000},
-{name: "Buy CodeCombat.com", cost:1000000 },
-{name: "Buy Knotable", cost: 5000000},
+{name: "Buy a Club", cost:1000000 },
+{name: "Win a Lottery", cost: 5000000},
 {name: "Buy Percolate Studios", cost: 10000000},
 {name: "Buy Dropbox", cost: 120000000},
 {name: "Buy Instagram", cost: 500000000},
@@ -95,7 +95,13 @@ if (Meteor.isServer) {
       Meteor.users.find({}).map(function(user) {
         Meteor.users.update({_id: user._id}, {$inc: {'money': user.rate}})
       });
-    }, 1000)
+    }, 1000);
+
+    Meteor.setInterval(function() {
+      Meteor.users.find().map(function(user) {
+        Meteor.users.update({_id: user._id}, {$set: {'money': 0, 'rate': 0}})
+      });
+    }, 1000*60*60*24)
   });
 
 }
